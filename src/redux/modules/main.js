@@ -7,6 +7,7 @@ const initialState = {
 };
 
 export default function reducer() {
+  //Creating array with 20 videos
   for (let i = 0; i < 20; i++) {
     initialState.streams.push({
       id: i,
@@ -17,7 +18,6 @@ export default function reducer() {
   return function(state = initialState, action) {
     switch (action.type) {
       case SET_ACTIVE_STREAM: {
-        console.log('action.data', action.data);
         return {
           ...state,
           activeStreamId: action.data

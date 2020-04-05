@@ -8,16 +8,19 @@ export default (props) => {
   const { stream, height, width } = props;
   const activeStreamId = useSelector(state => state.main.activeStreamId);
   const dispatch = useDispatch();
+  //Variable for storing status of current video tag playing/paused
   const [isPlayButtonShown, setPlayButtonShown] = useState(true);
 
   const videoNode = useRef(null);
 
+  //Put on pause video if no video stream selected or selected some other stream
   useEffect(() => {
     if (activeStreamId && activeStreamId !== stream.id) {
       videoNode.current.pause();
     }
   }, [activeStreamId]);
 
+  //Change playing status of component and set current playing stream
   const handleClickButton = () => {
     dispatch(setActiveStream(stream.id));
     isPlayButtonShown ? videoNode.current.play() : videoNode.current.pause();

@@ -5,10 +5,8 @@ import reducer from '../redux/modules/reducer';
 export default function getStore() {
   let enhancers = [];
   let middleware = [];
-
-  if (process.env.__DEVTOOLS__) {
-    middleware.push(createLogger());
-  }
+  //Convenient logger for dev version to check redux store's status
+  middleware.push(createLogger());
 
   enhancers.push(applyMiddleware(...middleware));
 

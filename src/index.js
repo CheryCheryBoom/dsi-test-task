@@ -8,8 +8,9 @@ import getStore from "./redux/create";
 import * as serviceWorker from './serviceWorker';
 import Spinner from "./containers/Spinner";
 
+//Created redux store
 const store = getStore();
-
+//Main component of the project
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
