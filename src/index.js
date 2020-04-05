@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
+import './css/App.css';
+import App from './containers/App';
+import { Provider } from 'react-redux';
+import getStore from "./redux/create";
 import * as serviceWorker from './serviceWorker';
+import Spinner from "./containers/Spinner";
+
+const store = getStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <React.Suspense fallback={<Spinner/>}>
+        <App/>
+      </React.Suspense>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
